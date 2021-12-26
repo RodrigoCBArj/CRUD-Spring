@@ -16,7 +16,7 @@ public class CrudSpringApplication {
 	}
 
 	@Bean
-	CommandLineRunner initDataBase(VideoRepository videoRepository) {	// remover quando finalizar o desenvolvimento
+	CommandLineRunner initDataBase(VideoRepository videoRepository) {	// remover quando adicionar db final
 		return args -> {
 			videoRepository.deleteAll();
 
