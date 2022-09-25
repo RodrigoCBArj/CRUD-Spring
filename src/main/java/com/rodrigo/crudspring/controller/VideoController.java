@@ -5,9 +5,9 @@ import java.util.List;
 import com.rodrigo.crudspring.model.Video;
 import com.rodrigo.crudspring.repository.VideoRepository;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
@@ -21,5 +21,13 @@ public class VideoController {
     @GetMapping
     public List<Video> list() {
         return videoRepository.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Video save(@RequestBody Video video) {
+//        return ResponseEntity.status(HttpStatus.CREATED)
+//                .body(videoRepository.save(video));
+        return videoRepository.save(video);
     }
 }
